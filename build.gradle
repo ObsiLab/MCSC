@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '0.1.0'
+version = '0.0.1-1.19'
 group = 'com.obsilab.mcsc' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'mcsc'
 
@@ -49,7 +49,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'mcsc'
+            property 'forge.enabledGameTestNamespaces', archivesBaseName
 
             mods {
                 mcsc {
@@ -65,7 +65,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'mcsc'
+            property 'forge.enabledGameTestNamespaces', archivesBaseName
 
             mods {
                 mcsc {
@@ -84,7 +84,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'mcsc'
+            property 'forge.enabledGameTestNamespaces', archivesBaseName
 
             mods {
                 mcsc {
@@ -101,7 +101,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'mcsc', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', archivesBaseName, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 mcsc {

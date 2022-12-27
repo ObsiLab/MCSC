@@ -1,5 +1,5 @@
 # eclipse
-#bin
+bin
 *.launch
 .settings
 .metadata
@@ -38,7 +38,7 @@ forge*changelog.txt
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
