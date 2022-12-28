@@ -49,6 +49,22 @@ public class ModItems {
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
 
+    public static final RegistryObject<Item> WAFER_CASSETTE_ITEM = ITEMS.register(
+            "wafer_cassette", () -> new Item(
+                    new Item.Properties()
+                            .stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> FOUP_ITEM = ITEMS.register(
+            "foup", () -> new Item(
+                    new Item.Properties()
+                            .stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
