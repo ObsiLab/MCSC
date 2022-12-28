@@ -1,10 +1,14 @@
 package com.obsilab.mcsc;
 
 import com.mojang.logging.LogUtils;
+import com.obsilab.mcsc.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,6 +27,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+
+import static net.minecraft.core.registries.Registries.ITEM;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MCSC.MOD_ID)
@@ -67,6 +73,8 @@ public class MCSC
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -93,8 +101,27 @@ public class MCSC
 
     private void addCreative(CreativeModeTabEvent.BuildContents event)
     {
+        /*
         if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS)
             event.accept(EXAMPLE_BLOCK_ITEM);
+
+        */
+    }
+
+
+    @SubscribeEvent
+    public void buildContents(CreativeModeTabEvent.Register event) {
+        event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "mcsc"), builder ->
+                // Set name of tab to display
+                builder.title(Component.translatable("item_group." + MOD_ID))
+                        // Set icon of creative tab
+                        .icon(() -> new ItemStack(ModItems.ETCHED_WAFER_ITEM.get()))
+                        // Add default items to tab
+                        .displayItems((enabledFlags, populator, hasPermissions) -> {
+                            populator.accept(ModItems.ETCHED_WAFER_ITEM.get());
+                            //populator.accept(BLOCK.get());
+                        })
+        );
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

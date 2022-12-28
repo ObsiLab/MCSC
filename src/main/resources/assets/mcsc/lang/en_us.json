@@ -1,0 +1,7 @@
+{
+  "item.mcsc.empty_wafer": "Empty Wafer",
+  "item.mcsc.exposed_wafer": "Exposed Wafer",
+  "item.mcsc.etched_wafer": "Etched Wafer",
+
+  "item_group.mcsc": "MCSC"
+}
