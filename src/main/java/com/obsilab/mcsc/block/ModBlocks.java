@@ -35,6 +35,7 @@ public class ModBlocks {
             () -> new TestBlock(BlockBehaviour.Properties
                     .of(Material.METAL)
                     .strength(6f)
+                    .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
 
 

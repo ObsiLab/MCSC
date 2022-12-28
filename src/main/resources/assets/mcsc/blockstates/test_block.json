@@ -1,5 +1,6 @@
 {
   "variants": {
-    "": { "model": "mcsc:block/test_block" }
+    "active=true": { "model": "mcsc:block/test_block_active" },
+    "active=false": { "model": "mcsc:block/test_block" }
   }
 }

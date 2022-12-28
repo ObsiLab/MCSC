@@ -9,6 +9,8 @@
   "item.mcsc.foup": "Foup",
 
   "item.mcsc.test_item": "Test Item",
+  "item.mcsc.test_item.description": "Test Item test description",
+
   "block.mcsc.test_block": "Test Block",
 
   "block.mcsc.foup_storage": "Foup Storage",

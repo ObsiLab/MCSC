@@ -75,6 +75,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> TEST_ITEM_ITEM = ITEMS.register(
             "test_item", () -> new TestItem(
+                    // new Item.Properties()
                     new TestItem.Properties()
                             .stacksTo(1)
                             //.group(MCSC.MCSC_GROUP)

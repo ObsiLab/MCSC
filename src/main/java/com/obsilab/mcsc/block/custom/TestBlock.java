@@ -14,11 +14,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class TestBlock extends Block {
+
+    public static final BooleanProperty ACTIVE = BooleanProperty.create("active"); // e.g. LIT for lights, etc
+
     public TestBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
+        ACTIVE.value(false);
+        stateBuilder.add(ACTIVE);
     }
 
     @Override
@@ -37,6 +48,8 @@ public class TestBlock extends Block {
 
         if(!level.isClientSide() && hand==InteractionHand.MAIN_HAND) {
             player.sendSystemMessage(Component.literal("TestBlock used"));
+            level.setBlock(blockPos, state.cycle(ACTIVE), 3); // 3 ???
+
             return InteractionResult.SUCCESS; // skips checking the rest of use(), like the off-hand checking, etc
         }
 
