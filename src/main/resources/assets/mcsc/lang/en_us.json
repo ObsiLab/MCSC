@@ -2,6 +2,10 @@
   "item.mcsc.empty_wafer": "Empty Wafer",
   "item.mcsc.exposed_wafer": "Exposed Wafer",
   "item.mcsc.etched_wafer": "Etched Wafer",
+  "item.mcsc.wafer_cassette": "Wafer Cassette",
+  "item.mcsc.foup": "Foup",
+
+  "block.mcsc.foup_storage": "Foup Storage",
 
   "item_group.mcsc": "MCSC"
 }
