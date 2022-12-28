@@ -1,0 +1,25 @@
+{
+  "//type": "minecraft:crafting_shaped",
+  "//pattern": [
+    "",
+    "#",
+    ""
+  ],
+    "key": {
+        "#": {
+        "item": "mcsc:monocrystalline_silicon_boule"
+        }
+    },
+    "//result": {
+        "item": "mcsc:empty_wafer",
+        "count": 16
+    },
+
+  "type": "minecraft:stonecutting",
+  "category": "mcsc",
+  "ingredient": {
+    "item": "mcsc:monocrystalline_silicon_boule"
+  },
+  "result": "mcsc:empty_wafer",
+  "count": 16
+}

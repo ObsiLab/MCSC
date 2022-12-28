@@ -1,7 +1,9 @@
 package com.obsilab.mcsc.block;
 
 import com.obsilab.mcsc.MCSC;
+import com.obsilab.mcsc.block.custom.TestBlock;
 import com.obsilab.mcsc.item.ModItems;
+import com.obsilab.mcsc.item.custom.TestItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -21,11 +23,18 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> FOUP_STORAGE_BLOCK = registerBlock(
-            "foup_storage", () -> new Block(
-                    BlockBehaviour.Properties
-                            .of(Material.METAL)
-                            .strength(6f)
-                            .requiresCorrectToolForDrops()
+            "foup_storage",
+            () -> new Block(BlockBehaviour.Properties
+                    .of(Material.METAL)
+                    .strength(6f)
+                    .requiresCorrectToolForDrops()
+            ));
+
+    public static final RegistryObject<Block> TEST_BLOCK_BLOCK = registerBlock(
+            "test_block",
+            () -> new TestBlock(BlockBehaviour.Properties
+                    .of(Material.METAL)
+                    .strength(6f)
             ));
 
 

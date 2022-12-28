@@ -1,6 +1,7 @@
 package com.obsilab.mcsc.item;
 
 import com.obsilab.mcsc.MCSC;
+import com.obsilab.mcsc.item.custom.TestItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,6 +16,13 @@ public class ModItems {
     /*
     // ----- ITEMS : ------
      */
+    public static final RegistryObject<Item> SILICON_ITEM = ITEMS.register(
+            "silicon", () -> new Item(
+                    new Item.Properties()
+                            //.stacksTo(1)
+
+            ));
+
     public static final RegistryObject<Item> EMPTY_WAFER_ITEM = ITEMS.register(
             "empty_wafer", () -> new Item(
                     new Item.Properties()
@@ -60,6 +68,14 @@ public class ModItems {
     public static final RegistryObject<Item> FOUP_ITEM = ITEMS.register(
             "foup", () -> new Item(
                     new Item.Properties()
+                            .stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> TEST_ITEM_ITEM = ITEMS.register(
+            "test_item", () -> new TestItem(
+                    new TestItem.Properties()
                             .stacksTo(1)
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)
