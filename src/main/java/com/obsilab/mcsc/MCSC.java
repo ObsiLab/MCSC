@@ -1,6 +1,7 @@
 package com.obsilab.mcsc;
 
 import com.mojang.logging.LogUtils;
+import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -74,6 +75,7 @@ public class MCSC
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -99,21 +101,32 @@ public class MCSC
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event)
-    {
-        /*
-        if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(EXAMPLE_BLOCK_ITEM);
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
 
+        var ModItemsList = ModItems.ITEMS.getEntries();
+        var ModBlocksList = ModBlocks.BLOCKS.getEntries();
+        if (event.getTab() == CreativeModeTabs.SEARCH) {
+            for (RegistryObject<Item> mod_item : ModItemsList) {
+                event.accept(mod_item.get());
+            }
+            for (RegistryObject<Block> mod_block : ModBlocksList) {
+                event.accept(mod_block.get());
+            }
+            //event.accept(ModItems.EMPTY_WAFER_ITEM.get());
+        }
+        /*
+        if (event.getTab() == CreativeModeTabs.MCSC) {
+            event.accept(ModItems.EMPTY_WAFER_ITEM.get());
+        }
         */
     }
 
-
+    //! BELOW NOT WORKING RN
     @SubscribeEvent
     public void buildContents(CreativeModeTabEvent.Register event) {
         event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "mcsc"), builder ->
                 // Set name of tab to display
-                builder.title(Component.translatable("item_group." + MOD_ID))
+                builder.title(Component.translatable("item_group." + MOD_ID + ".mcsc"))
                         // Set icon of creative tab
                         .icon(() -> new ItemStack(ModItems.ETCHED_WAFER_ITEM.get()))
                         // Add default items to tab
