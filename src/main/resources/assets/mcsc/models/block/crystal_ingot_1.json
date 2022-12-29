@@ -1,0 +1,7 @@
+{
+  "parent": "block/crop",
+  "render_layer": "cutout",
+  "textures": {
+    "crop": "mcsc.block/crystal_ingot_1"
+  }
+}

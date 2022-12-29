@@ -73,6 +73,14 @@ public class ModItems {
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
 
+    public static final RegistryObject<Item> SILICON_CRYSTAL_SEED = ITEMS.register(
+            "silicon_crystal_seed", () -> new Item(
+                    new Item.Properties()
+                            //.stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
     public static final RegistryObject<Item> TEST_ITEM_ITEM = ITEMS.register(
             "test_item", () -> new TestItem(
                     // new Item.Properties()

@@ -2,8 +2,11 @@ package com.obsilab.mcsc;
 
 import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
+import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -29,6 +32,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
+import java.util.Collection;
+
+import static net.minecraft.core.registries.Registries.BLOCK;
 import static net.minecraft.core.registries.Registries.ITEM;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -92,6 +98,15 @@ public class MCSC
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+
+        /*
+        CreativeModeTabs.tabs().add(new CreativeModeTabs("mcsc") {
+            @Override
+            public ItemStack makeIcon() {
+                return new ItemStack(ModItems.EMPTY_WAFER_ITEM.get());
+            }
+        });
+        */
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -103,15 +118,24 @@ public class MCSC
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
 
-        var ModItemsList = ModItems.ITEMS.getEntries();
-        var ModBlocksList = ModBlocks.BLOCKS.getEntries();
+        Collection<RegistryObject<Item>> ModItemsList = ModItems.ITEMS.getEntries();
+        Collection<RegistryObject<Block>> ModBlocksList = ModBlocks.BLOCKS.getEntries();
         if (event.getTab() == CreativeModeTabs.SEARCH) {
             for (RegistryObject<Item> mod_item : ModItemsList) {
                 event.accept(mod_item.get());
             }
+
             for (RegistryObject<Block> mod_block : ModBlocksList) {
-                event.accept(mod_block.get());
+                if (mod_block.get() instanceof CrystalIngotBlock) { // if(mod_block.get().getName().equals("crystal_ingot"))
+                  //continue; // remove crop block, prevents crashing
+                } else {
+                  event.accept(mod_block.get());
+                }
+
+                //event.accept(mod_block.get());
             }
+
+
             //event.accept(ModItems.EMPTY_WAFER_ITEM.get());
         }
         /*
@@ -156,6 +180,8 @@ public class MCSC
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            //ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRYSTAL_INGOT_BLOCK.get(), RenderType.cutout()); // deprecated, replaced by "render_layer": "cutout" in block model json
         }
     }
 }

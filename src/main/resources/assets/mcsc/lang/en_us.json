@@ -7,13 +7,16 @@
   "item.mcsc.wafer_cassette": "Wafer Cassette",
   "item.mcsc.monocrystalline_silicon_boule": "Monocrystalline Silicon Boule",
   "item.mcsc.foup": "Foup",
+  "item.mcsc.silicon_crystal_seed": "Silicon Crystal Seed",
 
   "item.mcsc.test_item": "Test Item",
   "item.mcsc.test_item.description": "Test Item test description",
 
   "block.mcsc.test_block": "Test Block",
+    "block.mcsc.test_block.description": "Test Block test description",
 
   "block.mcsc.foup_storage": "Foup Storage",
+  "block.mcsc.crystal_ingot": "Crystal Ingot",
 
   "item_group.mcsc": "MCSC"
 }

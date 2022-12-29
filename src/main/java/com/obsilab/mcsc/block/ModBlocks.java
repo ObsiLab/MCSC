@@ -1,6 +1,7 @@
 package com.obsilab.mcsc.block;
 
 import com.obsilab.mcsc.MCSC;
+import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.block.custom.TestBlock;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.item.custom.TestItem;
@@ -8,6 +9,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,6 +32,22 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
             ));
 
+    public static final RegistryObject<Block> BORAX_ORE = registerBlock( // => boric acid => boron for p-type doping
+            "borax_ore",
+            () -> new Block(BlockBehaviour.Properties
+                    .of(Material.STONE)
+                    .strength(3f)
+                    .requiresCorrectToolForDrops()
+            ));
+
+    public static final RegistryObject<Block> PHOSPHATE_ORE = registerBlock(
+            "phosphate_ore",
+            () -> new Block(BlockBehaviour.Properties
+                    .of(Material.STONE)
+                    .strength(3f)
+                    .requiresCorrectToolForDrops()
+            ));
+
     public static final RegistryObject<Block> TEST_BLOCK_BLOCK = registerBlock(
             "test_block",
             () -> new TestBlock(BlockBehaviour.Properties
@@ -37,6 +55,15 @@ public class ModBlocks {
                     .strength(6f)
                     .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
+    public static final RegistryObject<Block> CRYSTAL_INGOT_BLOCK = BLOCKS.register( // crop block, so not register BlockItem
+            "crystal_ingot",
+            () -> new CrystalIngotBlock(BlockBehaviour.Properties
+                    .copy(Blocks.WHEAT)
+                    //.of(Material.METAL)
+                    .strength(4f)
+                    //.requiresCorrectToolForDrops() // TODO
+            ));
+
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){//, CreativeModeTab tab) {
