@@ -5,11 +5,13 @@ import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.block.custom.TestBlock;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.item.custom.TestItem;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,18 +36,21 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BORAX_ORE = registerBlock( // => boric acid => boron for p-type doping
             "borax_ore",
-            () -> new Block(BlockBehaviour.Properties
+            () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
                     .strength(3f)
-                    .requiresCorrectToolForDrops()
+                    .requiresCorrectToolForDrops(),
+                    UniformInt.of(3,7)
             ));
+
 
     public static final RegistryObject<Block> PHOSPHATE_ORE = registerBlock(
             "phosphate_ore",
-            () -> new Block(BlockBehaviour.Properties
+            () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
                     .strength(3f)
-                    .requiresCorrectToolForDrops()
+                    .requiresCorrectToolForDrops(),
+                    UniformInt.of(3,7)
             ));
 
     public static final RegistryObject<Block> TEST_BLOCK_BLOCK = registerBlock(

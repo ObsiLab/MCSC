@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "mcsc:foup_storage"
+    "mcsc:foup_storage",
+    "mcsc:borax_ore",
+    "mcsc:phosphate_ore"
   ]
 }

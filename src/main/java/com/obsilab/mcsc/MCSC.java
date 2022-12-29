@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.item.ModItems;
+import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -82,6 +83,8 @@ public class MCSC
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

@@ -8,15 +8,19 @@
   "item.mcsc.monocrystalline_silicon_boule": "Monocrystalline Silicon Boule",
   "item.mcsc.foup": "Foup",
   "item.mcsc.silicon_crystal_seed": "Silicon Crystal Seed",
+  "item.mcsc.raw_borax": "Raw Borax",
+  "item.mcsc.raw_phosphate": "Raw Phosphate",
 
   "item.mcsc.test_item": "Test Item",
-  "item.mcsc.test_item.description": "Test Item test description",
+    "item.mcsc.test_item.description": "Test Item test description",
 
   "block.mcsc.test_block": "Test Block",
     "block.mcsc.test_block.description": "Test Block test description",
 
   "block.mcsc.foup_storage": "Foup Storage",
   "block.mcsc.crystal_ingot": "Crystal Ingot",
+  "block.mcsc.borax_ore": "Borax Ore",
+  "block.mcsc.phosphate_ore": "Phosphate Ore",
 
   "item_group.mcsc": "MCSC"
 }

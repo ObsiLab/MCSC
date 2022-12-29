@@ -76,7 +76,20 @@ public class ModItems {
     public static final RegistryObject<Item> SILICON_CRYSTAL_SEED = ITEMS.register(
             "silicon_crystal_seed", () -> new Item(
                     new Item.Properties()
-                            //.stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> RAW_BORAX = ITEMS.register(
+            "raw_borax", () -> new Item(
+                    new Item.Properties()
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> RAW_PHOSPHATE = ITEMS.register(
+            "raw_phosphate", () -> new Item(
+                    new Item.Properties()
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
