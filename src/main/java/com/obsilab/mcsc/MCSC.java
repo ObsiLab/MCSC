@@ -5,6 +5,7 @@ import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
+import com.obsilab.mcsc.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -44,6 +45,7 @@ public class MCSC
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "mcsc";
+    public static final String MCSC = MOD_ID; // 🤷‍♂️
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     /*
@@ -85,6 +87,7 @@ public class MCSC
         ModBlocks.register(modEventBus);
 
         ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
