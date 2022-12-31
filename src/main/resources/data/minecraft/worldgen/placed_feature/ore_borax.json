@@ -11,12 +11,12 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:triangle",
         "max_inclusive": {
-          "below_top": 0
+          "absolute": 160
         },
         "min_inclusive": {
-          "absolute": 136
+          "absolute": 0
         }
       }
     },

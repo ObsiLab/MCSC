@@ -47,6 +47,15 @@ public class ModConfiguredFeatures {
                     10 // vein size
             )));
     */
+    // public static final RegistryObject<OreFeatures> BORAX_ORE =
+    //         CONFIGURED_FEATURES.register("borax_ore",
+    //                 () -> new OreFeatures(new OreConfiguration(
+    //                 new TagMatchTest(BlockTags.BASE_STONE_OVERWORLD),
+    //                 ModBlocks.BORAX_ORE.get().defaultBlockState(),
+    //                 10 // vein size
+    //         )
+    // ));
+
 
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BORAX = FeatureUtils.createKey("ore_borax");
