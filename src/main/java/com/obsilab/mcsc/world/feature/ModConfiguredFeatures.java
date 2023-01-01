@@ -27,16 +27,16 @@ public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
             DeferredRegister.create(Registries.CONFIGURED_FEATURE, MCSC.MOD_ID);
 
-    /*
+
     public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_BORAX_ORES =
             Suppliers.memoize(() -> List.of(
-                OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.BORAX_ORE.get().defaultBlockState())//,
+                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), ModBlocks.BORAX_ORE.get().defaultBlockState())//,
                 //OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_BORAX_ORE.get().defaultBlockState())
             ));
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_PHOSPHATE_ORES =
             Suppliers.memoize(() -> List.of(
-                OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.PHOSPHATE_ORE.get().defaultBlockState())//,
+                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), ModBlocks.PHOSPHATE_ORE.get().defaultBlockState())//,
                 //OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get().defaultBlockState())
             ));
 
@@ -46,7 +46,7 @@ public class ModConfiguredFeatures {
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_BORAX_ORES.get(),
                     10 // vein size
             )));
-    */
+
     // public static final RegistryObject<OreFeatures> BORAX_ORE =
     //         CONFIGURED_FEATURES.register("borax_ore",
     //                 () -> new OreFeatures(new OreConfiguration(

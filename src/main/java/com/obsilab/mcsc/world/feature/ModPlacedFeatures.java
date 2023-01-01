@@ -15,13 +15,13 @@ public class ModPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
             DeferredRegister.create(Registries.PLACED_FEATURE, MCSC.MOD_ID);
 
-    // public static final RegistryObject<PlacedFeature> BORAX_ORE_PLACED = PLACED_FEATURES.register("borax_ore_placed",
-    //         () -> new PlacedFeature(ModConfiguredFeatures.BORAX_ORE.getHolder().get(),
-    //                 commonOrePlacement(6, // VeinsPerChunk
-    //                         HeightRangePlacement.triangle(
-    //                                 VerticalAnchor.absolute(0),
-    //                                 VerticalAnchor.absolute(160)
-    //                         ))));
+    public static final RegistryObject<PlacedFeature> BORAX_ORE_PLACED = PLACED_FEATURES.register("borax_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.BORAX_ORE.getHolder().get(),
+                    commonOrePlacement(6, // VeinsPerChunk
+                            HeightRangePlacement.triangle(
+                                    VerticalAnchor.absolute(0),
+                                    VerticalAnchor.absolute(160)
+                            ))));
 
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier placementModifier1) {
