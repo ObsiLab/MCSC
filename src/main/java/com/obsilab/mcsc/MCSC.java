@@ -7,6 +7,7 @@ import com.obsilab.mcsc.event.CreativeTabEvents;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.networking.ModMessages;
 import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
+import com.obsilab.mcsc.world.feature.ModFeatures;
 import com.obsilab.mcsc.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -38,6 +39,7 @@ import org.slf4j.Logger;
 
 import java.util.Collection;
 
+import static com.obsilab.mcsc.event.CreativeTabEvents.MCSC_TAB;
 import static net.minecraft.core.registries.Registries.BLOCK;
 import static net.minecraft.core.registries.Registries.ITEM;
 
@@ -47,6 +49,7 @@ public class MCSC
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "mcsc";
+    public static final String MODID = MOD_ID;
     public static final String MCSC = MOD_ID; // 🤷‍♂️
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -85,16 +88,20 @@ public class MCSC
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus); // registers items
+        ModBlocks.register(modEventBus); // registers blocks
 
-        ModConfiguredFeatures.register(modEventBus);
-        ModPlacedFeatures.register(modEventBus);
+        //ModConfiguredFeatures.register(modEventBus); // registers configured features
+        //ModPlacedFeatures.register(modEventBus); // registers placed features
+
+        //ModFeatures.register(modEventBus); // registers features
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
         // Register the custom creative tab ("MCSC") event
         modEventBus.addListener(CreativeTabEvents::onCreativeTabEvent);
+        modEventBus.addListener(CreativeTabEvents::onCreativeTabBuildContents);
         // old: Register the item to a creative tab
         //      modEventBus.addListener(this::addCreative);
 
@@ -127,45 +134,36 @@ public class MCSC
 
         event.enqueueWork(() -> {
             ModMessages.register();
+            //? ModPlacedFeatures.register((IEventBus) event);
+            //? ModPlacedFeatures.register((IEventBus) event);
             // ModVillagers.registerPOIs(); // to be implemented?
         });
 
     }
 
-    /* replaced by CreativeTabEvents.java (custom tab)
-    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+    // duplicate of CreativeTabEvents.onCreativeTabBuildContents (custom tab)
+    private void addCreativeTab(CreativeModeTabEvent.BuildContents event) {
 
+        if (event.getTab() == MCSC_TAB || event.getTab() == CreativeModeTabs.SEARCH) {
 
-
-        Collection<RegistryObject<Item>> ModItemsList = ModItems.ITEMS.getEntries();
-        Collection<RegistryObject<Block>> ModBlocksList = ModBlocks.BLOCKS.getEntries();
-        if (event.getTab() == CreativeModeTabs.SEARCH) {
+            Collection<RegistryObject<Item>> ModItemsList = ModItems.ITEMS.getEntries();
+            Collection<RegistryObject<Block>> ModBlocksList = ModBlocks.BLOCKS.getEntries();
+            //List ignoredBlocks = [CrystalIngotBlock]; //! test
             for (RegistryObject<Item> mod_item : ModItemsList) {
-                event.accept(mod_item.get());
+                event.accept(new ItemStack(mod_item.get()));
             }
-
             for (RegistryObject<Block> mod_block : ModBlocksList) {
+                //check if the block is a crop block
                 if (mod_block.get() instanceof CrystalIngotBlock) { // if(mod_block.get().getName().equals("crystal_ingot"))
-                  //continue; // remove crop block, prevents crashing
+                    //continue; // remove crop block, prevents crashing
                 } else {
-                  event.accept(mod_block.get());
+                    event.accept(new ItemStack(mod_block.get()));
                 }
 
                 //event.accept(mod_block.get());
             }
-
-
-            //event.accept(ModItems.EMPTY_WAFER_ITEM.get());
         }
-
-        //if (event.getTab() == CreativeModeTabs.MCSC) {
-        //    event.accept(ModItems.EMPTY_WAFER_ITEM.get());
-        //}
-        //
-
     }
-
-    */
 
     /*
     @SubscribeEvent
@@ -205,7 +203,6 @@ public class MCSC
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-            //ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRYSTAL_INGOT_BLOCK.get(), RenderType.cutout()); // deprecated, replaced by "render_layer": "cutout" in block model json
         }
     }
 }
