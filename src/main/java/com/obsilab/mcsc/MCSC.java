@@ -3,7 +3,9 @@ package com.obsilab.mcsc;
 import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
+import com.obsilab.mcsc.event.CreativeTabEvents;
 import com.obsilab.mcsc.item.ModItems;
+import com.obsilab.mcsc.networking.ModMessages;
 import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
 import com.obsilab.mcsc.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
@@ -91,8 +93,12 @@ public class MCSC
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        // Register the custom creative tab ("MCSC") event
+        modEventBus.addListener(CreativeTabEvents::onCreativeTabEvent);
+        // old: Register the item to a creative tab
+        //      modEventBus.addListener(this::addCreative);
 
-        /*
+        /* see ModBlocks.java and ModItems.java
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -102,8 +108,6 @@ public class MCSC
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
 
         /*
         CreativeModeTabs.tabs().add(new CreativeModeTabs("mcsc") {
@@ -120,9 +124,18 @@ public class MCSC
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+        event.enqueueWork(() -> {
+            ModMessages.register();
+            // ModVillagers.registerPOIs(); // to be implemented?
+        });
+
     }
 
+    /* replaced by CreativeTabEvents.java (custom tab)
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
+
+
 
         Collection<RegistryObject<Item>> ModItemsList = ModItems.ITEMS.getEntries();
         Collection<RegistryObject<Block>> ModBlocksList = ModBlocks.BLOCKS.getEntries();
@@ -144,14 +157,17 @@ public class MCSC
 
             //event.accept(ModItems.EMPTY_WAFER_ITEM.get());
         }
-        /*
-        if (event.getTab() == CreativeModeTabs.MCSC) {
-            event.accept(ModItems.EMPTY_WAFER_ITEM.get());
-        }
-        */
+
+        //if (event.getTab() == CreativeModeTabs.MCSC) {
+        //    event.accept(ModItems.EMPTY_WAFER_ITEM.get());
+        //}
+        //
+
     }
 
-    //! BELOW NOT WORKING RN
+    */
+
+    /*
     @SubscribeEvent
     public void buildContents(CreativeModeTabEvent.Register event) {
         event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "mcsc"), builder ->
@@ -166,6 +182,8 @@ public class MCSC
                         })
         );
     }
+
+    */
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
