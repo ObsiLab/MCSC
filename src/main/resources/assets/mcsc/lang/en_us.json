@@ -11,16 +11,25 @@
   "item.mcsc.raw_borax": "Raw Borax",
   "item.mcsc.raw_phosphate": "Raw Phosphate",
 
-  "item.mcsc.test_item": "Test Item",
-    "item.mcsc.test_item.description": "Test Item test description",
 
-  "block.mcsc.test_block": "Test Block",
-    "block.mcsc.test_block.description": "Test Block test description",
+  "item.mcsc.wrench": "Wrench",
+  "item.mcsc.toolkit": "Toolkit",
+
 
   "block.mcsc.foup_storage": "Foup Storage",
   "block.mcsc.crystal_ingot": "Crystal Ingot",
   "block.mcsc.borax_ore": "Borax Ore",
   "block.mcsc.phosphate_ore": "Phosphate Ore",
 
-  "item_group.mcsc.tab": "MCSC"
+
+  "item_group.mcsc.tab": "MCSC",
+
+
+
+  "item.mcsc.test_item": "Test Item",
+    "item.mcsc.test_item.description_1": "Test Item test description line 1",
+    "item.mcsc.test_item.description_2": "Test Item test description line 2",
+
+  "block.mcsc.test_block": "Test Block",
+    "block.mcsc.test_block.description_1": "Test Block test description"
 }
