@@ -3,6 +3,7 @@ package com.obsilab.mcsc.item;
 import com.obsilab.mcsc.MCSC;
 import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.custom.TestItem;
+import com.obsilab.mcsc.item.custom.ToolItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -98,21 +99,23 @@ public class ModItems {
             ));
 
     public static final RegistryObject<Item> WRENCH_ITEM = ITEMS.register(
-            "wrench", () -> new Item(
-                    new Item.Properties()
+            "wrench", () -> new ToolItem(
+                    new ToolItem.Properties()
                             .stacksTo(1)
                             .durability(100)
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)
+            , true
             ));
 
     public static final RegistryObject<Item> TOOLKIT_ITEM = ITEMS.register(
-            "toolkit", () -> new Item(
-                    new Item.Properties()
+            "toolkit", () -> new ToolItem(
+                    new ToolItem.Properties()
                             .stacksTo(1)
-                            .durability(100)
+                            .durability(1000)
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)
+            , false
             ));
 
     public static final RegistryObject<Item> TEST_ITEM_ITEM = ITEMS.register(
