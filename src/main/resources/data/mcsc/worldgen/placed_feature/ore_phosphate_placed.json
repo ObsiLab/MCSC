@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:borax_ore",
+  "feature": "mcsc:ore_phosphate_placed",
   "placement": [
     {
       "type": "minecraft:count",

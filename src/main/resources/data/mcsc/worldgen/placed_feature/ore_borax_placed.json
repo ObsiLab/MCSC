@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:ore_phosphate",
+  "feature": "mcsc:ore_borax_placed",
   "placement": [
     {
       "type": "minecraft:count",
@@ -13,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "below_top": 0
+          "absolute": 160
         },
         "min_inclusive": {
-          "absolute": 160
+          "absolute": 0
         }
       }
     },
