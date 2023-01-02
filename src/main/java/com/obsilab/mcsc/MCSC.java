@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.event.CreativeTabEvents;
+import com.obsilab.mcsc.fluid.ModFluidTypes;
+import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.networking.ModMessages;
 import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
@@ -95,6 +97,10 @@ public class MCSC
         //ModPlacedFeatures.register(modEventBus); // registers placed features
 
         //ModFeatures.register(modEventBus); // registers features
+
+        //ModFluids before ModFluidTypes?
+        ModFluids.register(modEventBus); // registers fluids
+        ModFluidTypes.register(modEventBus); // registers fluid types
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -202,6 +208,8 @@ public class MCSC
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            //set render layer for fluid? in json?
 
         }
     }

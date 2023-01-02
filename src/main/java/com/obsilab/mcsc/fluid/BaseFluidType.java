@@ -15,12 +15,13 @@ public class BaseFluidType extends FluidType {
     //private final Vector3f fogColor; // fog when inside the fluid
 
     //contructor:
-    public BaseFluidType(final ResourceLocation stillTexture, final Properties properties) {
+    public BaseFluidType(final ResourceLocation stillTexture, final Properties properties) { //TODO add other textures in arguments
         super(properties);
         this.stillTexture = stillTexture;
     }
 
     //getter(s):
+    // TODO other textures
     public ResourceLocation getStillTexture() {
         return stillTexture;
     }
@@ -32,7 +33,7 @@ public class BaseFluidType extends FluidType {
             public ResourceLocation getStillTexture() {
                 return stillTexture;
             }
-
+            // TODO other textures
             // @Nullable for the getOverlayTexture override, if used
             // @NotNull for the modifyFogColor override, if used
 

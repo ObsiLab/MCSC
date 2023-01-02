@@ -1,8 +1,11 @@
 package com.obsilab.mcsc.item;
 
 import com.obsilab.mcsc.MCSC;
+import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.custom.TestItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -94,10 +97,38 @@ public class ModItems {
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
 
+    public static final RegistryObject<Item> WRENCH_ITEM = ITEMS.register(
+            "wrench", () -> new Item(
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(100)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> TOOLKIT_ITEM = ITEMS.register(
+            "toolkit", () -> new Item(
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(100)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
     public static final RegistryObject<Item> TEST_ITEM_ITEM = ITEMS.register(
             "test_item", () -> new TestItem(
                     // new Item.Properties()
                     new TestItem.Properties()
+                            .stacksTo(1)
+                            //.group(MCSC.MCSC_GROUP)
+                            //.tab(ModCreativeModeTab.MCSC_TAB)
+            ));
+
+    public static final RegistryObject<Item> TEST_FLUID_BUCKET = ITEMS.register(
+            "test_fluid_bucket", () -> new BucketItem(
+                    ModFluids.SOURCE_TEST_FLUID,
+                    new Item.Properties()
+                            .craftRemainder(Items.BUCKET)
                             .stacksTo(1)
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)

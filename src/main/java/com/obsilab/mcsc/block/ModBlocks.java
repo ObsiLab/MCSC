@@ -3,6 +3,7 @@ package com.obsilab.mcsc.block;
 import com.obsilab.mcsc.MCSC;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.block.custom.TestBlock;
+import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.item.custom.TestItem;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -60,6 +62,14 @@ public class ModBlocks {
                     .strength(6f)
                     .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
+
+    public static final RegistryObject<LiquidBlock> TEST_FLUID_BLOCK = BLOCKS.register("test_fluid_block",
+            () -> new LiquidBlock(
+                    ModFluids.SOURCE_TEST_FLUID,
+                    BlockBehaviour.Properties
+                            .copy(Blocks.WATER)
+            ));
+
     public static final RegistryObject<Block> CRYSTAL_INGOT_BLOCK = BLOCKS.register( // crop block, so not register BlockItem
             "crystal_ingot",
             () -> new CrystalIngotBlock(BlockBehaviour.Properties
