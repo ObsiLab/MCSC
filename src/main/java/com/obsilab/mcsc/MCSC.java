@@ -3,27 +3,16 @@ package com.obsilab.mcsc;
 import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
 import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
-import com.obsilab.mcsc.event.CreativeTabEvents;
 import com.obsilab.mcsc.fluid.ModFluidTypes;
 import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.networking.ModMessages;
-import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
-import com.obsilab.mcsc.world.feature.ModFeatures;
-import com.obsilab.mcsc.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -34,16 +23,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 import java.util.Collection;
-
-import static com.obsilab.mcsc.event.CreativeTabEvents.MCSC_TAB;
-import static net.minecraft.core.registries.Registries.BLOCK;
-import static net.minecraft.core.registries.Registries.ITEM;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MCSC.MOD_ID)
@@ -106,10 +90,10 @@ public class MCSC
         modEventBus.addListener(this::commonSetup);
 
         // Register the custom creative tab ("MCSC") event
-        modEventBus.addListener(CreativeTabEvents::onCreativeTabEvent);
-        modEventBus.addListener(CreativeTabEvents::onCreativeTabBuildContents);
+        //modEventBus.addListener(CreativeTabEvents::onCreativeTabEvent);
+        //modEventBus.addListener(CreativeTabEvents::onCreativeTabBuildContents);
         // old: Register the item to a creative tab
-        //      modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::addCreative);
 
         /* see ModBlocks.java and ModItems.java
         // Register the Deferred Register to the mod event bus so blocks get registered
@@ -148,9 +132,9 @@ public class MCSC
     }
 
     // duplicate of CreativeTabEvents.onCreativeTabBuildContents (custom tab)
-    private void addCreativeTab(CreativeModeTabEvent.BuildContents event) {
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
 
-        if (event.getTab() == MCSC_TAB || event.getTab() == CreativeModeTabs.SEARCH) {
+        if (event.getTab() == ModCreativeModeTabs.MCSC_TAB || event.getTab() == CreativeModeTabs.SEARCH) {
 
             Collection<RegistryObject<Item>> ModItemsList = ModItems.ITEMS.getEntries();
             Collection<RegistryObject<Block>> ModBlocksList = ModBlocks.BLOCKS.getEntries();
