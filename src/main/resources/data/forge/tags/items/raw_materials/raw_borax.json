@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "mcsc:raw_borax",
+    {
+      "id": "othermod:raw_borax",
+      "required": false
+    }
+  ]
+}

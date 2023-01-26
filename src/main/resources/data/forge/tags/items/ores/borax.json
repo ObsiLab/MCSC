@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "mcsc:borax_ore",
+    {
+      "id": "othermod:borax_ore",
+      "required": false
+    }
+  ]
+}
