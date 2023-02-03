@@ -30,6 +30,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MCSC.MOD_ID);
 
 
+    public static final RegistryObject<Block> FOUP_STORAGE_BLOCK = registerBlock(true,
             "foup_storage",
             () -> new Block(BlockBehaviour.Properties
                     .of(Material.METAL)
@@ -37,6 +38,7 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
             ));
 
+    public static final RegistryObject<Block> BORAX_ORE = registerBlock(true, // => boric acid => boron for p-type doping
             "borax_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
@@ -46,6 +48,7 @@ public class ModBlocks {
             ));
 
 
+    public static final RegistryObject<Block> PHOSPHATE_ORE = registerBlock(true,
             "phosphate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
@@ -54,6 +57,7 @@ public class ModBlocks {
                     UniformInt.of(2,4)
             ));
 
+    public static final RegistryObject<Block> TEST_BLOCK_BLOCK = registerBlock(true,
             "test_block",
             () -> new TestBlock(BlockBehaviour.Properties
                     .of(Material.METAL)
@@ -61,6 +65,7 @@ public class ModBlocks {
                     .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
 
+    public static final RegistryObject<LiquidBlock> TEST_FLUID_BLOCK = registerBlock(true,
             "test_fluid_block",
             () -> new LiquidBlock(
                     ModFluids.SOURCE_TEST_FLUID,
@@ -68,6 +73,7 @@ public class ModBlocks {
                             .copy(Blocks.WATER)
             ));
 
+    public static final RegistryObject<Block> CRYSTAL_INGOT_BLOCK = registerBlock(false, // crop block, so do not register BlockItem
             "crystal_ingot",
             () -> new CrystalIngotBlock(BlockBehaviour.Properties
                     .copy(Blocks.WHEAT)
@@ -78,8 +84,12 @@ public class ModBlocks {
 
 
 
+    private static <T extends Block> RegistryObject<T> registerBlock(Boolean register_block_item, String name, Supplier<T> block){
         LOGGER.info("MCSC: Registering Block >> {} : {}", name, block.get()); //? .get() ?
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        if (register_block_item) {
+            registerBlockItem(name, toReturn);
+        }
         return toReturn;
     }
 

@@ -114,11 +114,15 @@ public class MCSC
                 event.accept(new ItemStack(mod_item.get()));
             }
             for (RegistryObject<Block> mod_block : ModBlocksList) {
+                //check if the block is a crop block => needed? since did not register blockItem for crop blocks
+                /*
                 if (mod_block.get() instanceof CrystalIngotBlock) { // if(mod_block.get().getName().equals("crystal_ingot"))
                     //continue; // remove crop block, prevents crashing
                 } else {
                     event.accept(new ItemStack(mod_block.get()));
                 }
+                */
+                event.accept(new ItemStack(mod_block.get())); // all from the list
             }
         }
     }
