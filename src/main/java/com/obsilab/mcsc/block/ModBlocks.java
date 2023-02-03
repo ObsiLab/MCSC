@@ -23,12 +23,13 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
+import static com.obsilab.mcsc.MCSC.LOGGER;
+
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, MCSC.MOD_ID);
 
 
-    public static final RegistryObject<Block> FOUP_STORAGE_BLOCK = registerBlock(
             "foup_storage",
             () -> new Block(BlockBehaviour.Properties
                     .of(Material.METAL)
@@ -36,26 +37,23 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
             ));
 
-    public static final RegistryObject<Block> BORAX_ORE = registerBlock( // => boric acid => boron for p-type doping
             "borax_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
                     .strength(3f)
                     .requiresCorrectToolForDrops(),
-                    UniformInt.of(3,7)
+                    UniformInt.of(2,4)
             ));
 
 
-    public static final RegistryObject<Block> PHOSPHATE_ORE = registerBlock(
             "phosphate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties
                     .of(Material.STONE)
                     .strength(3f)
                     .requiresCorrectToolForDrops(),
-                    UniformInt.of(3,7)
+                    UniformInt.of(2,4)
             ));
 
-    public static final RegistryObject<Block> TEST_BLOCK_BLOCK = registerBlock(
             "test_block",
             () -> new TestBlock(BlockBehaviour.Properties
                     .of(Material.METAL)
@@ -63,14 +61,13 @@ public class ModBlocks {
                     .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
 
-    public static final RegistryObject<LiquidBlock> TEST_FLUID_BLOCK = BLOCKS.register("test_fluid_block",
+            "test_fluid_block",
             () -> new LiquidBlock(
                     ModFluids.SOURCE_TEST_FLUID,
                     BlockBehaviour.Properties
                             .copy(Blocks.WATER)
             ));
 
-    public static final RegistryObject<Block> CRYSTAL_INGOT_BLOCK = BLOCKS.register( // crop block, so not register BlockItem
             "crystal_ingot",
             () -> new CrystalIngotBlock(BlockBehaviour.Properties
                     .copy(Blocks.WHEAT)
@@ -81,16 +78,14 @@ public class ModBlocks {
 
 
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){//, CreativeModeTab tab) {
+        LOGGER.info("MCSC: Registering Block >> {} : {}", name, block.get()); //? .get() ?
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);//, tab);
         return toReturn;
-
-        //return BLOCKS.register(name, block);
     }
 
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){//, CreativeModeTab tab) {
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));//.tab(tab)));
+    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
+        LOGGER.info("MCSC: Registering its blockItem >> {} : {}", name, block.get()); //? .get() ?
+        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

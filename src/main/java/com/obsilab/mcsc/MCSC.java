@@ -36,39 +36,10 @@ public class MCSC
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "mcsc";
     public static final String MODID = MOD_ID;
-    public static final String MCSC = MOD_ID; // 🤷‍♂️
+    //public static final String MCSC = MOD_ID; // 🤷‍♂️
+
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
-    /*
-    // Create a Deferred Register to hold Blocks which will all be registered under the "mcsc" namespace
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    // Create a Deferred Register to hold Items which will all be registered under the "mcsc" namespace
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-
-    // Creates a new Block with the id "mcsc:example_block", combining the namespace
-    // and path
-    public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register(
-            "example_block", () -> new Block(
-                    BlockBehaviour.Properties.of(Material.STONE)));
-    // Creates a new BlockItem with the id "mcsc:example_block", combining the
-    // namespace and path
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register(
-            "example_block", () -> new BlockItem(
-                    EXAMPLE_BLOCK.get(), new Item.Properties()));
-
-    // SHOULD PUT THINGS IN SUB-PACKAGES
-
-    // Creates a new Item with the id "mcsc:empty_wafer", combining the namespace
-    // and path
-    public static final RegistryObject<Item> EMPTY_WAFER_ITEM = ITEMS.register(
-            "empty_wafer", () -> new Item(
-                    new Item.Properties()));
-    // Creates a new Item with the id "mcsc:etched_wafer", combining the namespace
-    // and path
-    public static final RegistryObject<Item> ETCHED_WAFER_ITEM = ITEMS.register(
-            "etched_wafer", () -> new Item(
-                    new Item.Properties()));
-    */
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public MCSC()
     {
@@ -143,14 +114,11 @@ public class MCSC
                 event.accept(new ItemStack(mod_item.get()));
             }
             for (RegistryObject<Block> mod_block : ModBlocksList) {
-                //check if the block is a crop block
                 if (mod_block.get() instanceof CrystalIngotBlock) { // if(mod_block.get().getName().equals("crystal_ingot"))
                     //continue; // remove crop block, prevents crashing
                 } else {
                     event.accept(new ItemStack(mod_block.get()));
                 }
-
-                //event.accept(mod_block.get());
             }
         }
     }
