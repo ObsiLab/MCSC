@@ -2,7 +2,6 @@ package com.obsilab.mcsc.world.feature;
 
 import com.obsilab.mcsc.MCSC;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.eventbus.api.IEventBus;

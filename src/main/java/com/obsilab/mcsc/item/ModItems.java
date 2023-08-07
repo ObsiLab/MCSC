@@ -132,6 +132,7 @@ public class ModItems {
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
 
+    /*
     public static final RegistryObject<Item> TEST_FLUID_BUCKET = registerItem(
             "test_fluid_bucket", () -> new BucketItem(
                     ModFluids.SOURCE_TEST_FLUID,
@@ -141,9 +142,10 @@ public class ModItems {
                             //.group(MCSC.MCSC_GROUP)
                             //.tab(ModCreativeModeTab.MCSC_TAB)
             ));
+     */
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item){
-        LOGGER.info("MCSC: Registering Item >> {} : {}", name, item.get()); //? .get() ?
+        LOGGER.info("MCSC: Registering Item >> {} : {}", name, item.toString()); //? .toString() ? .get() ?
         return ITEMS.register(name, item);
     }
 

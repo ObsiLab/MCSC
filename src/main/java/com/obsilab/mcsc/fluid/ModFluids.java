@@ -18,6 +18,7 @@ public class ModFluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, MCSC.MOD_ID);
 
+    /*
     public static final RegistryObject<FlowingFluid> SOURCE_TEST_FLUID =
             FLUIDS.register("test_fluid", () -> new ForgeFlowingFluid.Source(ModFluids.TEST_FLUID_PROPERTIES));
 
@@ -34,6 +35,7 @@ public class ModFluids {
                     .block(ModBlocks.TEST_FLUID_BLOCK)
                     .bucket(ModItems.TEST_FLUID_BUCKET)
             ;
+     */
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);

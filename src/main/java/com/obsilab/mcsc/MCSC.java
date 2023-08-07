@@ -2,11 +2,14 @@ package com.obsilab.mcsc;
 
 import com.mojang.logging.LogUtils;
 import com.obsilab.mcsc.block.ModBlocks;
-import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
+//import com.obsilab.mcsc.block.custom.CrystalIngotBlock;
 import com.obsilab.mcsc.fluid.ModFluidTypes;
 import com.obsilab.mcsc.fluid.ModFluids;
 import com.obsilab.mcsc.item.ModItems;
 import com.obsilab.mcsc.networking.ModMessages;
+import com.obsilab.mcsc.world.feature.ModConfiguredFeatures;
+import com.obsilab.mcsc.world.feature.ModFeatures;
+import com.obsilab.mcsc.world.feature.ModPlacedFeatures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -54,8 +57,8 @@ public class MCSC
         //ModFeatures.register(modEventBus); // registers features
 
         //ModFluids before ModFluidTypes?
-        ModFluids.register(modEventBus); // registers fluids
-        ModFluidTypes.register(modEventBus); // registers fluid types
+        //ModFluids.register(modEventBus); // registers fluids
+        //ModFluidTypes.register(modEventBus); // registers fluid types
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

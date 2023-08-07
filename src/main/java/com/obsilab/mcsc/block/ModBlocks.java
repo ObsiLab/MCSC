@@ -65,6 +65,7 @@ public class ModBlocks {
                     .lightLevel(state -> state.getValue(TestBlock.ACTIVE) ? 8 : 0) // light level of 8 if block's ACTIVE property is true, else light level of 0
             ));
 
+    /*
     public static final RegistryObject<LiquidBlock> TEST_FLUID_BLOCK = registerBlock(true,
             "test_fluid_block",
             () -> new LiquidBlock(
@@ -72,6 +73,7 @@ public class ModBlocks {
                     BlockBehaviour.Properties
                             .copy(Blocks.WATER)
             ));
+     */
 
     public static final RegistryObject<Block> CRYSTAL_INGOT_BLOCK = registerBlock(false, // crop block, so do not register BlockItem
             "crystal_ingot",
@@ -85,7 +87,7 @@ public class ModBlocks {
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(Boolean register_block_item, String name, Supplier<T> block){
-        LOGGER.info("MCSC: Registering Block >> {} : {}", name, block.get()); //? .get() ?
+        LOGGER.info("MCSC: Registering Block >> {} : {}", name, block.toString()); //? .toString() ? .get() ?
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         if (register_block_item) {
             registerBlockItem(name, toReturn);
@@ -94,7 +96,7 @@ public class ModBlocks {
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
-        LOGGER.info("MCSC: Registering its blockItem >> {} : {}", name, block.get()); //? .get() ?
+        LOGGER.info("MCSC: Registering its blockItem >> {} : {}", name, block.toString()); //? .toString() ? .get() ?
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
