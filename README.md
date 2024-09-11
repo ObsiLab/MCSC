@@ -2,7 +2,7 @@
 
 # MCSC
 ### A semiconductor manufacturing Forge mod for Minecraft (Java)
-#### [Check out MCSC on CurseForge!](https://www.curseforge.com/minecraft/mc-mods/mcsc)
+#### Check out MCSC on [Modrinth](https://modrinth.com/project/mcsc) or on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mcsc) ([legacy](https://legacy.curseforge.com/minecraft/mc-mods/mcsc))!
 ## _**----- 🏗️ THIS IS A WORK IN PROGRESS 🚧 -----**_  
 [[Dev progress Trello kanban board]](https://trello.com/b/h5WsDJpo)
 
